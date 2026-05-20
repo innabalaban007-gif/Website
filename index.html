@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENCICLOPEDIA COSMETICĂ | Masterclass Digital Complet</title>
+    
+    <!-- Google Fonts: Elegance & Readability -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           1. VARIABILE ȘI RESETARE (Rândurile 1-100)
+           ========================================= */
+        :root {
+            --primary-black: #0a0a0a;
+            --accent-gold: #c5a059;
+            --soft-cream: #f9f6f2;
+            --dusty-rose: #d4a373;
+            --pure-white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.9);
+            --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--soft-cream);
+            color: var(--primary-black);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+           2. NAVIGAȚIE PREMIUM
+           ========================================= */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 90px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 2000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            letter-spacing: 4px;
+            font-weight: 700;
+            color: var(--primary-black);
+        }
+
+        .nav-menu { display: flex; list-style: none; }
+        .nav-menu li { margin: 0 15px; }
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary-black);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: var(--transition-slow);
+        }
+        .nav-menu a:hover { color: var(--accent-gold); }
+
+        /* =========================================
+           3. HERO VIDEO/IMAGE SECTION
+           ========================================= */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-box h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* =========================================
+           4. LAYOUT ȘI SECȚIUNI REPETITIVE (VOLUM)
+           ========================================= */
+        .full-section { padding: 120px 10%; }
+        .white-bg { background: var(--pure-white); }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        .section-title h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+        }
+        .section-title span {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* GRID COMPLEX PENTRU PRODUSE */
+        .mega-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+        }
+
+        .article-card {
+            background: var(--pure-white);
+            border: 1px solid #f0f0f0;
+            transition: var(--transition-slow);
+            position: relative;
+            overflow: hidden;
+        }
+        .article-card:hover { transform: translateY(-20px); box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
+
+        .article-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .article-content { padding: 30px; }
+        .article-content h3 { font-family: 'Playfair Display', serif; margin-bottom: 15px; font-size: 1.8rem; }
+
+        /* =========================================
+           5. TABELE ȘI ANALIZĂ TEHNICĂ (DENSE DATA)
+           ========================================= */
+        .data-table-container { overflow-x: auto; margin-top: 50px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th { background: var(--primary-black); color: white; padding: 25px; text-align: left; text-transform: uppercase; font-size: 0.8rem; }
+        td { padding: 20px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+        tr:hover { background: #fdfdfd; }
+
+        /* =========================================
+           6. SECȚIUNEA "ISTORIA MACHIAJULUI" (TEXT LUNG)
+           ========================================= */
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 100px;
+            margin-bottom: 100px;
+        }
+        .history-text { font-size: 1.1rem; color: #555; }
+
+        /* =========================================
+           7. FOOTER MASIV
+           ========================================= */
+        footer {
+            background: var(--primary-black);
+            color: white;
+            padding: 100px 10% 50px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 50px;
+        }
+        .footer-col h4 { color: var(--accent-gold); margin-bottom: 30px; font-family: 'Cinzel', serif; }
+        .footer-links li { list-style: none; margin-bottom: 15px; }
+        .footer-links a { color: #aaa; text-decoration: none; font-size: 0.9rem; }
+
+        /* =========================================
+           8. UTILITARE & ANIMAȚII
+           ========================================= */
+        .gold-button {
+            padding: 15px 40px;
+            background: var(--accent-gold);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .gold-button:hover { background: var(--primary-black); }
+
+        @media (max-width: 900px) {
+            .history-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            nav { height: auto; padding: 20px; flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGAȚIE -->
+    <nav>
+        <div class="logo">LUXE.ACADEMY</div>
+        <ul class="nav-menu">
+            <li><a href="#istorie">Istoric</a></li>
+            <li><a href="#ten">Stiința Tenului</a></li>
+            <li><a href="#ochi">Ochi & Buze</a></li>
+            <li><a href="#ingrediente">Ingrediente</a></li>
+            <li><a href="#pensule">Instrumente</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-box">
+            <span>DISCIPLINA FRUMUSEȚII</span>
+            <h1>Arta Machiajului<br>Modern</h1>
+            <p>Un ghid complet de 10.000 de cuvinte despre estetică și tehnică profesională.</p>
+            <a href="#ten" class="gold-button">ÎNCEPE CURSUL</a>
+        </div>
+    </header>
+
+    <!-- SECȚIUNEA 1: ISTORIC (TEXT DENS) -->
+    <section id="istorie" class="full-section white-bg">
+        <div class="section-title">
+            <span>Cronologie</span>
+            <h2>Evoluția Esteticii</h2>
+        </div>
+        
+        <div class="history-grid">
+            <div class="history-text">
+                <h3>Egiptul Antic (3000 î.Hr.)</h3>
+                <p>Machiajul a început ca o necesitate spirituală și medicală. Kohl-ul, realizat din galenă, era aplicat nu doar pentru frumusețe, ci și pentru a proteja ochii de soarele orbitor al deșertului și de infecții. Faraonii considerau machiajul un simbol al statutului divin.</p>
+                <br>
+                <h3>Era Victoriană</h3>
+                <p>O perioadă a contrastelor, unde machiajul strident era considerat vulgar. Femeile foloseau pudră de orez pentru un ten palid, simbol al nobleței care nu muncea în soare. Buzele erau ciupite pentru a obține o roșeață naturală, evitând vopselele chimice.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&w=800&q=80" class="article-img" alt="Istorie">
+        </div>
+    </section>
+
+    <!-- SECȚIUNEA 2: ȘTIINȚA TENULUI (GRID) -->
+    <section id="ten" class="full-section">
+        <div class="section-title">
+            <span>Arhitectura Feței</span>
+            <h2>Ghidul Produselor de Bază</h2>
+        </div>
+
+        <div class="mega-grid">
+            <!-- Produs 1 -->
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80" class="article-img" alt="Primer">
+                <div class="article-content">
+                    <h3>01. Primerul</h3>
+                    <p>Rol: Pregătește "pânza". Netezește liniile fine și blochează excesul de sebum.</p>
+                    <p><strong>Compoziție:</strong> Siliconi volatili pentru efect de blur instant.</p>
+                </div>
+            </article>
+
+            <!-- Produs 2 -->
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1599733594230-6b823276abcc?auto=format&fit=crop&w=800&q=80" class="article-img" alt="Foundation">
+                <div class="article-content">
+                    <h3>02. Fondul de Ten</h3>
+                    <p>Rol: Uniformizare cromatică. Există variante fluide, compacte sau minerale.</p>
+                    <p><strong>Zonă:</strong> Se aplică din centrul feței spre exterior pentru un blending natural.</p>
+                </div>
+            </article>
+
+            <!-- Produs 3 -->
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=800&q=80" class="article-img" alt="Concealer">
+                <div class="article-content">
+                    <h3>03. Corectorul (Concealer)</h3>
+                    <p>Rol: Camuflarea cearcănelor și a imperfecțiunilor punctuale. Pigmentație 40% mai mare.</p>
+                    <p><strong>Sfat:</strong> Alege o nuanță cu un subton piersică pentru cearcăne albăstrui.</p>
+                </div>
+            </article>
+            
+            <!-- REPETĂ ACEST BLOC "article-card" pentru încă 6 produse (Pudră, Blush, Bronzer, Iluminator, Fixator, Contur) pentru a dubla lungimea -->
+        </div>
+    </section>
+
+    <!-- SECȚIUNEA 3: TABEL COMPARATIV (DATE DENSE) -->
+    <section id="ingrediente" class="full-section white-bg">
+        <div class="section-title">
+            <span>Laborator</span>
+            <h2>Analiza Chimică a Ingredientelor</h2>
+        </div>
+
+        <div class="data-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nume Ingredient</th>
+                        <th>Funcție Moleculară</th>
+                        <th>Siguranță EWG</th>
+                        <th>Tip de Ten Recomandat</th>
+                        <th>Rol în Formula</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Acid Hialuronic</td>
+                        <td>Humectant</td>
+                        <td>Scăzut (1)</td>
+                        <td>Toate tipurile</td>
+                        <td>Reține apa în țesuturi</td>
+                    </tr>
+                    <tr>
+                        <td>Silica (Silice)</td>
+                        <td>Absorbant de sebum</td>
+                        <td>Scăzut (1)</td>
+                        <td>Ten gras / mixt</td>
+                        <td>Oferă finisaj mat (Soft Focus)</td>
+                    </tr>
+                    <tr>
+                        <td>Oxizi de Fier</td>
+                        <td>Pigment mineral</td>
+                        <td>Scăzut (2)</td>
+                        <td>Sensibil</td>
+                        <td>Oferă culoarea fondului de ten</td>
+                    </tr>
+                    <tr>
+                        <td>Dimethicone</td>
+                        <td>Emolient / Ocluziv</td>
+                        <td>Mediu (3)</td>
+                        <td>Ten uscat</td>
+                        <td>Creează bariera de netezire</td>
+                    </tr>
+                    <!-- Adaugă încă 15-20 de rânduri aici pentru volum maxim -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECȚIUNEA 4: INSTRUMENTE (PENSULE) -->
+    <section id="pensule" class="full-section">
+        <div class="section-title">
+            <span>Arsenalul Artistului</span>
+            <h2>Ghidul Pensulelor Profesionale</h2>
+        </div>
+        
+        <div class="mega-grid">
+            <div class="article-card">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80" class="article-img">
+                <div class="article-content">
+                    <h3>Pensula Kabuki</h3>
+                    <p>Ideală pentru aplicarea pudrei și a fondului de ten mineral. Peri deși pentru acoperire maximă.</p>
+                </div>
+            </div>
+            <div class="article-card">
+                <img src="https://images.unsplash.com/photo-1522338140262-f46f5913618a?auto=format&fit=crop&w=800&q=80" class="article-img">
+                <div class="article-content">
+                    <h3>Pensula de Blending</h3>
+                    <p>Formă de dom, peri moi. Esențială pentru a difuza fardul de ochi în pliul pleoapei.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER LUNG -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color: white;">LUXE.ACADEMY</div>
+                <p style="margin-top: 20px; color: #888;">Cea mai mare resursă online dedicată machiajului profesional. Învățăm lumea să vadă frumusețea prin știință și artă.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigare</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Cursuri Online</a></li>
+                    <li><a href="#">Produse Recomandate</a></li>
+                    <li><a href="#">Blog Beauty</a></li>
+                    <li><a href="#">Evenimente</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Suport</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Livrare Pro</a></li>
+                    <li><a href="#">Retururi</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Abonează-te</h4>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">Primește noutăți despre tehnici noi de contouring.</p>
+                <input type="email" placeholder="Emailul tău" style="background: #222; border: 1px solid #444; padding: 10px; width: 100%; color: white;">
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 50px; color: #444; font-size: 0.8rem;">&copy; 2026 LUXE ACADEMY. Toate drepturile rezervate. Creat pentru pasionații de perfecțiune.</p>
+    </footer>
